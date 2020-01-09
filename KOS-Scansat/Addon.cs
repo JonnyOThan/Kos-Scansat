@@ -184,11 +184,24 @@ namespace kOS.AddOns.kOSSCANsat
 
 		///<summary>
 		/// Suffix funtion for returing completed percentage of a scantype for a body
-		/// takes the kos parameters <BodyTarget>, <StrinValue> scantype
+		/// takes the kos parameters <BodyTarget>, <StringValue> scantype
 		///</summary>
 		public ScalarDoubleValue GetCoverage(BodyTarget body, StringValue scantype)
 		{
-		    return SCANWrapper.GetCoverage(scantype,body.Body);
+			// The internal parsing code requires case-sensitivity, so we need to sanitize the input here
+			StringValue sanitizedScanType = null;
+			foreach (string s_type in Enum.GetNames(typeof(SCANtype)))
+			{
+				if(s_type.Equals(scantype.ToString(), System.StringComparison.InvariantCultureIgnoreCase))
+				{
+					sanitizedScanType = new StringValue(s_type);
+					break;
+				}
+			}
+			if(sanitizedScanType == null)
+				return 0.0;
+			else
+				return SCANWrapper.GetCoverage(sanitizedScanType,body.Body);
 		}
 
 		public ListValue GetAnomalies(BodyTarget body)
