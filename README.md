@@ -15,7 +15,7 @@ Unpack the .zip file in the GameData folder
 
 ## kOS Addon Functions:
  
-* Basepath is **addons:eva** 
+* Basepath is **addons:scansat** 
 * **\<geoposition\>** is the structure returned my latlng or vessel:geoposition
 * **\<body\>** ist the structure returned my SHIP:BODY or Mun,Duna ect. not a String.
 
@@ -59,4 +59,8 @@ Returns a list of the valid resources, which are known to scansat and activated 
 **:RESOURCEAT (\<body\>,\<geoposition\>,\<scantype\>)**
 
 Returns the value (as a double) of and given resource at the spot.
+
+**:GETANOMALIES (\<body\>)**
+
+Returns a list of discovered anomalies at the given body.
 

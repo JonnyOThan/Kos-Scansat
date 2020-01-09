@@ -7,8 +7,9 @@
 
 	using kOS.Safe.Encapsulation;
 	using SCANsat.SCAN_Data;
+using SCANsat;
 
-	namespace kOS.AddOns.kOSSCANsat
+namespace kOS.AddOns.kOSSCANsat
 	{
 	    [kOSAddon("SCANSAT")]
 	    [kOS.Safe.Utilities.KOSNomenclature("SCANsatAddon")]
@@ -34,7 +35,7 @@
 			AddSuffix("RESOURCEAT", new kOS.Safe.Encapsulation.Suffixes.VarArgsSuffix<ScalarDoubleValue, Structure>(GetResourceByName, "Returns the amount of a resource by its scan type: Body,GeoCoordinates,scantype"));
 			AddSuffix("SLOPE", new kOS.Safe.Encapsulation.Suffixes.TwoArgsSuffix<ScalarDoubleValue, BodyTarget, GeoCoordinates>(GetSlope, "Returns the most accurate slope of the location"));
 			AddSuffix("GETCOVERAGE", new kOS.Safe.Encapsulation.Suffixes.TwoArgsSuffix<ScalarDoubleValue, BodyTarget, StringValue>(GetCoverage, "Returns completen percatage of a body,scantype"));
-
+			AddSuffix("GETANOMALIES", new kOS.Safe.Encapsulation.Suffixes.OneArgsSuffix<ListValue, BodyTarget>(GetAnomalies, "Returns a list of waypoints to anomalies on the given body"));
 
             SCANWrapper = new SCANWrapper();
             if (IsModInstalled("scansat"))
@@ -188,6 +189,29 @@
 		public ScalarDoubleValue GetCoverage(BodyTarget body, StringValue scantype)
 		{
 		    return SCANWrapper.GetCoverage(scantype,body.Body);
+		}
+
+		public ListValue GetAnomalies(BodyTarget body)
+		{
+			ListValue anomalies = new ListValue();
+
+			if (IsModInstalled("scansat"))
+			{
+				var scanData = SCANcontroller.controller.getData(body.Body.bodyName);
+
+				if (scanData != null)
+				{
+					foreach (var anomaly in scanData.Anomalies)
+					{
+						if (anomaly.Known)
+						{
+							anomalies.Add(new AnomalyValue(anomaly, body.Body, shared));
+						}
+					}
+				}
+			}
+
+			return anomalies;
 		}
 
 		///<summary>
