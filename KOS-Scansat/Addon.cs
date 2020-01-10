@@ -55,7 +55,6 @@ namespace kOS.AddOns.kOSSCANsat
 		{
 		    if (args.Length != 3 ) { return null; }
 		    BodyTarget body = args.Where(s => s.GetType() == typeof(BodyTarget)).Cast<BodyTarget>().First();
-	//            BodyTarget body = args[0] as BodyTarget;
 		    GeoCoordinates coordinate = args.Where(s => s.GetType() == typeof(GeoCoordinates)).Cast<GeoCoordinates>().First();
 		    StringValue s_type = args.Where(s => s.GetType() == typeof(StringValue)).Cast<StringValue>().First();
 
@@ -197,7 +196,7 @@ namespace kOS.AddOns.kOSSCANsat
 
 			if (IsModInstalled("scansat"))
 			{
-				var scanData = SCANcontroller.controller.getData(body.Body.bodyName);
+				var scanData = SCANUtil.getData(body.Body);
 
 				if (scanData != null)
 				{
