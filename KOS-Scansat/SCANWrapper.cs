@@ -32,7 +32,7 @@ namespace kOS.AddOns.kOSSCANsat
 				return SCANUtil.GetSCANtype(scanType.ToString());
 			}
 
-			throw new KOSException("{0} is not a valid scan type.  Use GetScanNames for valid types.");
+			throw new KOSException("{0} is not a valid scan type.  Use GetScanNames for valid types.", s_type);
         }
 
         internal bool GetResourceBiomeLock()
