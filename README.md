@@ -64,3 +64,14 @@ Returns the value (as a double) of and given resource at the spot.
 
 Returns a list of discovered anomalies at the given body.
 
+**anomaly:NAME**
+
+Gets the name of the anomaly if it has been visited with a Been-There-Done-That scanner, or "???" if not.
+
+**anomaly:DETAIL**
+
+Indicates whether the anomaly has been visited with a Been-There-Done-That scanner.
+
+**anomaly:GEOPOSITION**
+
+The geoposition of the anomaly.
