@@ -28,6 +28,11 @@ namespace kOS.AddOns.kOSSCANsat
 			RegisterInitializer(InitializeSuffixes);
 		}
 
+		public override string ToString()
+		{
+			return Name;
+		}
+
 		private void InitializeSuffixes()
 		{
 			AddSuffix("DETAIL", new Suffix<BooleanValue>(() => m_anomaly.Detail));
