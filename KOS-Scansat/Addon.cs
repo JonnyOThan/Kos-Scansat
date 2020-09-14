@@ -73,7 +73,7 @@ namespace kOS.AddOns.kOSSCANsat
 				throw new kOS.Safe.Exceptions.KOSException("invalid resource type");
 			}
 
-			if ((SCANWrapper.IsCovered(coordinate.Longitude, coordinate.Latitude, body.Body, resourceName)) || ((HasKerbNet("Resource") && (IsInKerbNetFoV(body.Body, coordinate.Longitude, coordinate.Latitude)))))
+			if ((SCANWrapper.IsCovered(coordinate.Longitude, coordinate.Latitude, body.Body, "ResourceHiRes")) || ((HasKerbNet("Resource") && (IsInKerbNetFoV(body.Body, coordinate.Longitude, coordinate.Latitude)))))
 			{
 				float amount = 0f;
 				var aRequest = new AbundanceRequest
