@@ -5,6 +5,12 @@ VisualStudioVersion = 15.0.25428.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KOS-Scansat", "KOS-Scansat\KOS-Scansat.csproj", "{30FDE23A-4621-4364-860F-8FBDF28760A0}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{D6FE7182-FA7B-4DEC-95F9-B5D913BA48C2}"
+	ProjectSection(SolutionItems) = preProject
+		GameData\kOS-SCANsat\kOS-SCANsat.version = GameData\kOS-SCANsat\kOS-SCANsat.version
+		README.md = README.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -18,5 +24,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {09F3AF1D-210A-4612-A480-47A3B8648E2A}
 	EndGlobalSection
 EndGlobal
