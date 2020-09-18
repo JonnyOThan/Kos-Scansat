@@ -56,9 +56,9 @@ Returns the completed percentage of the scantype of the body.
 
 Returns a list of the valid resources, which are known to scansat and activated by other mods
 
-**:RESOURCEAT (\<body\>,\<geoposition\>,\<scantype\>)**
+**:RESOURCEAT (\<body\>,\<geoposition\>,\<resourcename\>)**
 
-Returns the value (as a double) of and given resource at the spot.
+Returns the value (as a double) of and given resource at the spot.  Returns -1 if the resource amount is not known.
 
 **:GETANOMALIES (\<body\>)**
 
